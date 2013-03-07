@@ -54,6 +54,9 @@ loglevel 3
 
     mkdir /system
     mkdir /data 0771 system system
+#+++ TsungChing_Lin: for factory reset with rm
+    mkdir /temp_data 0777 system system
+#--- TsungChing_Lin: for factory reset with rm
     mkdir /cache 0770 system cache
     mkdir /config 0500 root root
 
@@ -533,6 +536,12 @@ service bluetoothd /system/bin/bluetoothd -n
 service installd /system/bin/installd
     class main
     socket installd stream 600 system system
+
+#+++ TsungChing_Lin: for factory reset with rm
+service rmasusdir /system/bin/asusrmdir1.sh
+    class main
+    oneshot
+#--- TsungChing_Lin: for factory reset with rm
 
 service flash_recovery /system/etc/install-recovery.sh
     class main
