@@ -362,7 +362,7 @@ on boot
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
     setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
     setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1220608
-    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.umts    4094,87380,1220608,4096,16384,110208
     setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
     setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
     setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
@@ -630,3 +630,12 @@ service onMpdChanged /system/bin/onMPDecision.sh
 on property:persist.sys.powersaving.mpdmode=*
     start onMpdChanged
 #CR++ 
+
+# For log uploader by harrison@asus.com 
+service logbackup /system/bin/sh /system/etc/packlogs.sh 
+class late_start 
+user root 
+group sdcard_rw 
+oneshot 
+disabled 
+

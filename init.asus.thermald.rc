@@ -14,4 +14,9 @@ on property:sys.thermald.disabled=*
 on property:sys.foregroundapp=*
 	start onFgAppChanged
 # ASUS_BSP--- VictorFu "For watching foreground app"
+# ASUS_BSP+++ VictorFu "For pad mode"
+on property:sys.config.resolution=*
+        start onFgAppChanged
+# ASUS_BSP--- VictorFu "For pad mode"
+
 
